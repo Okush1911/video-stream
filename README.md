@@ -31,6 +31,7 @@
 - YouTube/Local/Live/m3u8 stream support
 - Inline Search support
 - Control With Button support
+- Userbot Auto Join
 
 ## 🛠 Commands:
 - `/play (query)` - play music from youtube
@@ -41,6 +42,8 @@
 - `/resume` - resume the streaming (admin only)
 - `/skip` - switch to next stream (admin only)
 - `/stop` - end the streaming (admin only)
+- `/vmute` - for mute the userbot on voice chat
+- `/vunmute` - for unmute the userbot on voice chat
 - `/playlist` - show you all the current stream list
 - `/song (query)` - download music from youtube
 - `/video (query)` - download video from youtube
@@ -78,6 +81,7 @@ python3 main.py # run the bot.
 - [Zxce3](https://github.com/Zxce3) ``Dev``
 - [DoellBarr](https://github.com/DoellBarr) ``Dev``
 - [tofikdn](https://github.com/tofikdn) ``Dev``
+- [Hunter-XDD](https://github.com/Hunter-XDD) ``Dev``
 - [Laky's](https://github.com/Laky-64) for [``py-tgcalls``](https://github.com/pytgcalls/pytgcalls)
 - [Dan](https://github.com/delivrance) for [``Pyrogram``](https://github.com/pyrogram)
 
