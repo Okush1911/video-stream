@@ -1,4 +1,5 @@
 from driver.veez import call_py
+from pytgcalls import PyTgCalls
 from pytgcalls.types import Update
 from driver.queues import QUEUE, clear_queue, get_queue, pop_an_item
 from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
@@ -19,6 +20,7 @@ async def skip_current_song(chat_id):
             clear_queue(chat_id)
             return 1
         else:
+          try:
             songname = chat_queue[1][0]
             url = chat_queue[1][1]
             link = chat_queue[1][2]
@@ -43,6 +45,10 @@ async def skip_current_song(chat_id):
                 )
             pop_an_item(chat_id)
             return [songname, link, type]
+          except:
+            await call_py.leave_group_call(chat_id)
+            clear_queue(chat_id)
+            return 2
     else:
         return 0
 
@@ -68,3 +74,14 @@ async def on_end_handler(_, u: Update):
         chat_id = u.chat_id
         print(chat_id)
         await skip_current_song(chat_id)
+
+
+@call_py.on_closed_voice_chat()
+async def closed_handler(client: PyTgCalls, chat_id: int):
+   if chat_id in QUEUE:
+      clear_queue(chat_id)
+
+@call_py.on_kicked()
+async def kicked_handler(client: PyTgCalls, chat_id: int) -> None:
+   if chat_id in QUEUE:
+      clear_queue(chat_id)
